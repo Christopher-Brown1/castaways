@@ -12,7 +12,7 @@
   align-items: center;
   gap: 8px;
   border-radius: 8px;
-  border: 1px dashed var(--system-white);
+  border: 1px solid var(--system-white);
 }
 
 .roomCodeText {

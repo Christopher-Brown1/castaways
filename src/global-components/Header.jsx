@@ -24,7 +24,7 @@ export const Header = ({ step }) => {
             <div
               className={style.castawayCounterContainer}
               style={{
-                border: "1px dashed var(--system-orange)",
+                border: "1px solid var(--system-orange)",
               }}
             >
               <p
@@ -50,7 +50,7 @@ export const Header = ({ step }) => {
               <div
                 className={style.castawayCounterContainer}
                 style={{
-                  border: "1px dashed var(--system-blue)",
+                  border: "1px solid var(--system-blue)",
                 }}
               >
                 <p
@@ -74,7 +74,7 @@ export const Header = ({ step }) => {
               <div
                 className={style.castawayCounterContainer}
                 style={{
-                  border: "1px dashed var(--system-green)",
+                  border: "1px solid var(--system-green)",
                 }}
               >
                 <p
@@ -98,7 +98,7 @@ export const Header = ({ step }) => {
               <div
                 className={style.castawayCounterContainer}
                 style={{
-                  border: "1px dashed var(--system-orange)",
+                  border: "1px solid var(--system-orange)",
                 }}
               >
                 <p
