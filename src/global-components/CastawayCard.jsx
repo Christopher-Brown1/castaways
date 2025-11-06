@@ -18,7 +18,7 @@ export const CastawayCard = ({ castaway }) => {
             className={style.attributeContainer}
             style={{
               backgroundColor: "var(--system-red)",
-              borderColor: "var(--player-red)",
+              borderColor: "var(--system-red)",
             }}
           >
             <p className={style.attributeText}>Physical</p>
@@ -30,7 +30,7 @@ export const CastawayCard = ({ castaway }) => {
             className={style.attributeContainer}
             style={{
               backgroundColor: "var(--system-blue)",
-              borderColor: "var(--player-blue)",
+              borderColor: "var(--system-blue)",
             }}
           >
             <p className={style.attributeText}>Mental</p>
@@ -42,7 +42,7 @@ export const CastawayCard = ({ castaway }) => {
             className={style.attributeContainer}
             style={{
               backgroundColor: "var(--system-green)",
-              borderColor: "var(--player-green)",
+              borderColor: "var(--system-green)",
             }}
           >
             <p className={style.attributeText}>Social</p>

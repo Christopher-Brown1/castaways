@@ -1,8 +1,8 @@
-import style from "../onboarding/onboardingHeader.module.css"
+import style from "../global-components/header.module.css"
 
 import logo from "../assets/logo.png"
 
-export const OnboardingHeader = ({}) => {
+export const Header = ({}) => {
   return (
     <>
       <header className={style.headerContainer}>

@@ -1,6 +1,6 @@
 import style from "../onboarding/tribeDivision.module.css"
 
-import { OnboardingHeader } from "./OnboardingHeader.jsx"
+import { Header } from "../global-components/Header.jsx"
 import { PlayerCard } from "../global-components/PlayerCard.jsx"
 import { NextButton } from "../global-components/NextButton"
 
@@ -8,7 +8,7 @@ export const TribeDivision = ({ setStep, players }) => {
   return (
     <>
       <div className={style.tribeDivisionContent}>
-        <OnboardingHeader />
+        <Header />
         <div className={style.playersContainer}>
           <h2 className={style.playersText}>Players</h2>
           <div className={style.playerTileContainer}>

@@ -2,13 +2,13 @@ import style from "../onboarding/EnterGame.module.css"
 
 import { PlayerCard } from "../global-components/PlayerCard.jsx"
 import { NextButton } from "../global-components/NextButton"
-import { OnboardingHeader } from "./OnboardingHeader.jsx"
+import { Header } from "../global-components/Header.jsx"
 
 export const EnterGame = ({ setStep, players }) => {
   return (
     <>
       <div className={style.enterGameContent}>
-        <OnboardingHeader />
+        <Header />
         <div className={style.bodyContent}>
           <div className={style.playersContainer}>
             <h2 className={style.playersText}>Players</h2>

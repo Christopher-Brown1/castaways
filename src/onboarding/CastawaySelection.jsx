@@ -1,6 +1,6 @@
 import style from "../onboarding/CastawaySelection.module.css"
 
-import { OnboardingHeader } from "./OnboardingHeader"
+import { Header } from "../global-components/Header.jsx"
 import { PlayerNameCard } from "../global-components/PlayerNameCard.jsx"
 import { NextButton } from "../global-components/NextButton.jsx"
 import { CastawayCard } from "../global-components/CastawayCard.jsx"
@@ -8,8 +8,8 @@ import { CastawayCard } from "../global-components/CastawayCard.jsx"
 export const CastawaySelection = ({ setStep, players }) => {
   return (
     <>
-      <OnboardingHeader />
       <div className={style.deckContainer}>
+        <Header />
         <div className={style.tribeDeck}>
           <div className={style.deckHeader}>
             <h2 className={style.headerText}>Purple Tribe</h2>
