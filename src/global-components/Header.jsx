@@ -21,11 +21,22 @@ export const Header = ({ step }) => {
         <img src={logo} alt='App Logo' style={{ width: "360px" }} />
         <div className={style.statusContainer}>
           {step === "castawaySelection" && (
-            <div className={style.castawayCounterContainer}>
-              <p className={style.castawayCounterText}>Castaways</p>
+            <div
+              className={style.castawayCounterContainer}
+              style={{
+                border: "1px dashed var(--system-orange)",
+              }}
+            >
+              <p
+                className={style.castawayCounterText}
+                style={{ color: "var(--system-orange)" }}
+              >
+                Castaways
+              </p>
               <p
                 className={style.castawayCounterText}
                 style={{
+                  color: "var(--system-orange)",
                   borderTop: "1px solid var(--system-orange)",
                   width: "100%",
                 }}

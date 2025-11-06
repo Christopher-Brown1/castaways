@@ -1,4 +1,3 @@
-import React, { useState } from "react"
 import style from "../onboarding/Onboarding.module.css"
 
 import { Button } from "../global-components/Button.jsx"
