@@ -18,7 +18,7 @@ export const DailyMail = ({ setStep, players }) => {
             onClick={() => setStep("castawaySelection")}
             variant='primary'
           >
-            Deal Card
+            Deal
           </Button>
         </div>
       </div>
