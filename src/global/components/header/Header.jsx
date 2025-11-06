@@ -1,23 +1,13 @@
 import style from "./header.module.css"
+import { GameplayInfo } from "./GameplayInfo"
 
-import logo from "../assets/Logo.png"
+import logo from "../../assets/Logo.png"
 
 export const Header = ({ step }) => {
   return (
     <>
       <header className={style.headerContainer}>
-        <div className={style.roomCodeContainer}>
-          <p className={style.roomCodeText}>Room Code</p>
-          <p
-            className={style.roomCodeText}
-            style={{
-              borderTop: "1px solid var(--system-white)",
-              width: "100%",
-            }}
-          >
-            ABC123
-          </p>
-        </div>
+       <GameplayInfo />
         <img src={logo} alt='App Logo' style={{ width: "360px" }} />
         <div className={style.statusContainer}>
           {step === "castawaySelection" && (

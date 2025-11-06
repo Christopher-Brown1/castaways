@@ -6,7 +6,7 @@ import { EnterGame } from "./onboarding/EnterGame.jsx"
 import { TribeDivision } from "./onboarding/TribeDivision.jsx"
 import { CastawaySelection } from "./onboarding/CastawaySelection.jsx"
 import { Gameplay } from "./gameplay/Gameplay.jsx"
-import { Header } from "./global/components/Header.jsx"
+import { Header } from "./global/components/header/Header.jsx"
 
 function App() {
   const [step, setStep] = useState("enterGame")

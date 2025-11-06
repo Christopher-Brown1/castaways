@@ -7,6 +7,7 @@ import style from "./gameplay.module.css"
 import { DAILYMAIL } from "../gameConsts"
 
 export const Gameplay = ({ players }) => {
+  // const [phase, setPhase] = useState("dailyMail")
   const [card, setCard] = useState(null)
 
   return (
@@ -14,21 +15,22 @@ export const Gameplay = ({ players }) => {
       <div className={style.dailyMailContainer}>
         <TribeDeck1 players={players} />
         <TribeDeck2 players={players} />
-        <div className={style.instructionContainer}>
-          <h2 className={style.instructionText}>
-            Turn Leader: Draw a Daily Mail card.
-          </h2>
-          <Button
-            onClick={() => {
-              // draw card
-              setCard(DAILYMAIL[0])
-            }}
-            variant='primary'
-          >
-            Deal
-          </Button>
-        </div>
       </div>
+      <div className={style.instructionContainer}>
+        <h2 className={style.instructionText}>
+          Turn Leader: Draw a Daily Mail card.
+        </h2>
+        <Button
+          onClick={() => {
+            // draw card
+            setCard(DAILYMAIL[0])
+          }}
+          variant='primary'
+        >
+          Deal
+        </Button>
+      </div>
+
       {/* modal for card */}
     </>
   )
