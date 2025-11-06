@@ -1,6 +1,6 @@
 import { TribeDeck1 } from "../global-components/TribeDeck1"
 import { TribeDeck2 } from "../global-components/TribeDeck2"
-import { NextButton } from "../global-components/NextButton"
+// import { NextButton } from "../global-components/NextButton"
 import { Button } from "../global-components/Button"
 import style from "../daily-mail/dailyMail.module.css"
 
