@@ -1,6 +1,6 @@
 import style from "../onboarding/Onboarding.module.css"
 
-import { Button } from "../global/components/Button.jsx"
+import { Button } from "../global/components/buttons/Button.jsx"
 
 import logo from "../global/assets/Logo.png"
 

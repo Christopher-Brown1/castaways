@@ -1,24 +1,14 @@
-.deckContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-
 .instructionContainer {
   display: flex;
-  padding: 8px 0;
+  padding: 16px 0;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
 }
 
-.instructionText {
+.text {
   color: var(--system-white);
   font-family: "ADLaM Display";
   font-size: 36px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }

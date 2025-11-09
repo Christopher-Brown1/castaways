@@ -1,6 +1,6 @@
-import style from "../components/tribeDeck.module.css"
-import { PlayerNameCard } from "./PlayerNameCard"
-import { CastawayCard } from "./CastawayCard"
+import style from "../tribeDeck/tribeDeck.module.css"
+import { CastawayCard } from "../../../global/components/CastawayCard"
+import { PlayerNameCard } from "../../../global/components/player/PlayerNameCard"
 
 export const TribeDeck1 = ({ players }) => {
   return (

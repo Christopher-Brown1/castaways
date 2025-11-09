@@ -1,8 +1,8 @@
 import style from "../onboarding/CastawaySelection.module.css"
 
-import { TribeDeck1 } from "../global/components/TribeDeck1.jsx"
-import { TribeDeck2 } from "../global/components/TribeDeck2.jsx"
-import { NextButton } from "../global/components/NextButton.jsx"
+import { TribeDeck1 } from "../gameplay/components/tribeDeck/TribeDeck1.jsx"
+import { TribeDeck2 } from "../gameplay/components/tribeDeck/TribeDeck2.jsx"
+import { NextButton } from "../global/components/buttons/NextButton.jsx"
 
 export const CastawaySelection = ({ setStep, players }) => {
   return (

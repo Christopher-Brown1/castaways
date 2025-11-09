@@ -4,110 +4,49 @@ import { GameplayInfo } from "./GameplayInfo"
 import logo from "../../assets/Logo.png"
 
 export const Header = ({ step }) => {
+  const colors = {
+    roomCode: "var(--system-white)",
+    castaways: "var(--system-orange)",
+    currentPhase: "var(--system-blue)",
+    turnLeader: "var(--system-green)",
+  }
+
   return (
     <>
       <header className={style.headerContainer}>
-       <GameplayInfo />
+        <GameplayInfo
+          color={colors.roomCode}
+          title='Room Code'
+          content='ABC123'
+        />
         <img src={logo} alt='App Logo' style={{ width: "360px" }} />
         <div className={style.statusContainer}>
           {step === "castawaySelection" && (
-            <div
-              className={style.castawayCounterContainer}
-              style={{
-                border: "1px solid var(--system-orange)",
-              }}
-            >
-              <p
-                className={style.castawayCounterText}
-                style={{ color: "var(--system-orange)" }}
-              >
-                Castaways
-              </p>
-              <p
-                className={style.castawayCounterText}
-                style={{
-                  color: "var(--system-orange)",
-                  borderTop: "1px solid var(--system-orange)",
-                  width: "100%",
-                }}
-              >
-                18
-              </p>
-            </div>
+            <GameplayInfo
+              color={colors.castaways}
+              title='Castaways'
+              content='16'
+            />
           )}
           {step === "gameplay" && (
             <>
-              <div
-                className={style.castawayCounterContainer}
-                style={{
-                  border: "1px solid var(--system-blue)",
-                }}
-              >
-                <p
-                  className={style.castawayCounterText}
-                  style={{ color: "var(--system-blue)" }}
-                >
-                  Current Phase
-                </p>
-                <p
-                  className={style.castawayCounterText}
-                  style={{
-                    borderTop: "1px solid var(--system-blue)",
-                    color: "var(--system-blue)",
-                    width: "100%",
-                  }}
-                >
-                  Daily Mail
-                </p>
-              </div>
+              <GameplayInfo
+                color={colors.currentPhase}
+                title='Current Phase'
+                content={"Daily Mail"}
+              />
 
-              <div
-                className={style.castawayCounterContainer}
-                style={{
-                  border: "1px solid var(--system-green)",
-                }}
-              >
-                <p
-                  className={style.castawayCounterText}
-                  style={{ color: "var(--system-green)" }}
-                >
-                  Turn Leader
-                </p>
-                <p
-                  className={style.castawayCounterText}
-                  style={{
-                    borderTop: "1px solid var(--system-green)",
-                    color: "var(--system-green)",
-                    width: "100%",
-                  }}
-                >
-                  Chris
-                </p>
-              </div>
+              <GameplayInfo
+                color={colors.turnLeader}
+                title='Turn Leader'
+                content='Chris'
+              />
 
-              <div
-                className={style.castawayCounterContainer}
-                style={{
-                  border: "1px solid var(--system-orange)",
-                }}
-              >
-                <p
-                  className={style.castawayCounterText}
-                  style={{ color: "var(--system-orange)" }}
-                >
-                  Castaways
-                </p>
-                <p
-                  className={style.castawayCounterText}
-                  style={{
-                    borderTop: "1px solid var(--system-orange)",
-                    color: "var(--system-orange)",
-                    width: "100%",
-                  }}
-                >
-                  18
-                </p>
-              </div>
+              <GameplayInfo
+                color={colors.castaways}
+                title='Castaways'
+                content='16'
+              />
             </>
           )}
         </div>

@@ -1,7 +1,7 @@
 import style from "../onboarding/tribeDivision.module.css"
 
-import { PlayerCard } from "../global/components/PlayerCard.jsx"
-import { NextButton } from "../global/components/NextButton.jsx"
+import { PlayerCard } from "./PlayerCard.jsx"
+import { NextButton } from "../global/components/buttons/NextButton.jsx"
 
 export const TribeDivision = ({ setStep, players }) => {
   return (

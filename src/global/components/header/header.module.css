@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-self: stretch;
-  margin: 32px 0;
+  margin: 16px 0;
 }
 
 .roomCodeContainer {

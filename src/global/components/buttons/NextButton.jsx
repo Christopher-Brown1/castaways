@@ -1,6 +1,6 @@
-import style from "./NextButton.module.css"
+import style from "../buttons/nextButton.module.css"
 
-import nextButton from "../assets/nextArrow.svg"
+import nextButton from "../../assets/nextArrow.svg"
 
 export const NextButton = ({ onClick }) => {
   return (
