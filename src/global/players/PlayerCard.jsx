@@ -1,5 +1,5 @@
 import style from "../players/playerCard.module.css"
-
+import { PHASES } from "../../lib/consts"
 import alien from "../assets/alien.svg"
 import helmet from "../assets/helmet.svg"
 import microscope from "../assets/microscope.svg"
@@ -33,7 +33,7 @@ export const PlayerCard = ({ phase, player }) => {
     >
       <img
         src={ICONS[player.icon]}
-        alt='Player Icon'
+        alt="Player Icon"
         // className={style.playerIcon}
       />
       <div className={style.playerInfo}>
@@ -43,7 +43,7 @@ export const PlayerCard = ({ phase, player }) => {
         >
           <h3 className={style.infoText}>{player.name}</h3>
         </div>
-        {phase == "crewDivision" && (
+        {phase === PHASES.CREW_DIVISION && player.revealed && (
           <div
             className={style.crewContainer}
             style={{ background: `${CREW_COLORS[player.crew]}` }}

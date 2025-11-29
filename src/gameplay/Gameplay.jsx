@@ -1,9 +1,9 @@
 import { useContext } from "react"
 
 import { CrewDeck } from "../gameplay/crewDeck/CrewDeck"
-import { PlayerCard } from "../global/players/PlayerCard"
 import style from "./gameplay.module.css"
 import { EnterGame } from "./phases/EnterGame"
+import { CrewDivision } from "./phases/CrewDivision"
 
 import { PHASES } from "../lib/consts"
 import { StateContext } from "../lib/StateContext"
@@ -34,19 +34,7 @@ export const Gameplay = () => {
     <>
       {state.phase === PHASES.ENTER_GAME && <EnterGame />}
 
-      {state.phase === PHASES.CREW_DIVISION && (
-        <div
-          className={style.playerDeck}
-          style={{ width: "760px", margin: "64px auto" }}
-        >
-          <h2 className={style.headerText}>Players</h2>
-          <div className={style.cardsContainer}>
-            {state.players.map((player) => (
-              <PlayerCard phase={state.phase} player={player} />
-            ))}
-          </div>
-        </div>
-      )}
+      {state.phase === PHASES.CREW_DIVISION && <CrewDivision />}
 
       {state.phase === PHASES.CONTESTANT_REVEAL && (
         <div className={style.deckContainer}>
