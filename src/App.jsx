@@ -5,6 +5,7 @@ import { PHASES } from "./gameConsts"
 import { createRoom } from "./firebase"
 
 import { MasterView } from "./MasterView"
+import { ClientView } from "./ClientView"
 import "./App.css"
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
   }, [state?.loading, state.phase, setStartState])
 
   if (state.isClient) {
-    return <p>ClientView</p>
+    return <ClientView />
   }
   if (state.isMaster) {
     return <MasterView />
