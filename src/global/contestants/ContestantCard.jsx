@@ -2,9 +2,9 @@ import style from "../contestants/contestantCard.module.css"
 import lifeMeter from "../assets/lifeMeter.svg"
 
 const TYPE_COLORS = {
-  Body: "var(--contestant-orange)",
-  Mind: "var(--contestant-purple)",
-  Persona: "var(--contestant-green)",
+  body: "var(--contestant-orange)",
+  mind: "var(--contestant-purple)",
+  persona: "var(--contestant-green)",
 }
 
 export const ContestantCard = ({ contestant }) => {

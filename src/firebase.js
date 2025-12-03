@@ -1,10 +1,16 @@
 import { initializeApp } from "firebase/app"
-import { doc, setDoc, getDoc } from "firebase/firestore"
-import { getFirestore } from "firebase/firestore"
+import {
+  doc,
+  setDoc,
+  getDoc,
+  getFirestore,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore"
 
 import { generateRoomCode } from "./lib/utils"
-import { PHASES } from "./lib/consts"
-import { MOCK_PLAYERS } from "./lib/consts"
+import { PHASES } from "./gameConsts"
+import { MOCK_PLAYERS } from "./gameConsts"
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -19,9 +25,18 @@ const app = initializeApp(firebaseConfig)
 
 export const db = getFirestore(app)
 
+export const roomConverter = {
+  toFirestore(room) {
+    return { ...room, lastUpdated: serverTimestamp() }
+  },
+  fromFirestore(snapshot) {
+    return { ...snapshot.data(), id: snapshot.id }
+  },
+}
+
 export const createRoom = async () => {
   const randomRoomCode = generateRoomCode()
-  const roomRef = doc(db, "rooms", randomRoomCode)
+  const roomRef = doc(db, "rooms", randomRoomCode).withConverter(roomConverter)
   const docSnap = await getDoc(roomRef)
   if (docSnap.exists()) {
     return createRoom()
@@ -36,5 +51,12 @@ export const createRoom = async () => {
 
   const finalDocSnap = await getDoc(roomRef)
 
+  return finalDocSnap.data()
+}
+
+export const updateFirebaseState = async (room) => {
+  const roomRef = doc(db, "rooms", room.id).withConverter(roomConverter)
+  await updateDoc(roomRef, room)
+  const finalDocSnap = await getDoc(roomRef)
   return finalDocSnap.data()
 }

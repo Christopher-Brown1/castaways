@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import style from "../phaseInstructions/phaseInstructions.module.css"
-import { PHASES } from "../lib/consts"
+import { PHASES } from "../gameConsts"
 import phoneIcon from "../phaseInstructions/assets/phoneIcon.svg"
 import { NextButton } from "../global/buttons/NextButton"
 import { StateContext } from "../lib/StateContext"
 
 export const PhaseInstructions = () => {
-  const { state, setPhase } = useContext(StateContext)
+  const { state, setPhase, dealEventCards } = useContext(StateContext)
 
   return (
     <>
@@ -37,7 +37,10 @@ export const PhaseInstructions = () => {
           <img src={phoneIcon} className={style.phoneIcon} />
           <h3 className={style.text}>Identify your contestants.</h3>
           <NextButton
-            onClick={() => setPhase(PHASES.EVENT)}
+            onClick={() => {
+              setPhase(PHASES.EVENT)
+              dealEventCards()
+            }}
             variant="primary"
           />
         </div>
@@ -47,6 +50,9 @@ export const PhaseInstructions = () => {
           <img src={phoneIcon} className={style.phoneIcon} />
           <h3 className={style.text}>View and use event cards.</h3>
           <NextButton
+            disabled={state.players.some(
+              (p) => p.eventsCards[0].when === "NOW"
+            )}
             onClick={() => setPhase(PHASES.LINEUP)}
             variant="primary"
           />

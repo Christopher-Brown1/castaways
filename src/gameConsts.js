@@ -1,9 +1,22 @@
+export const PHASES = {
+  ENTER_GAME: "Enter Game",
+  CREW_DIVISION: "Crew Division",
+  CONTESTANT_REVEAL: "Contestant Reveal",
+  EVENT: "Event",
+  LINEUP: "Lineup",
+  CHALLENGE: "Challenge",
+  STRATEGIZE: "Strategize",
+  SUMMIT_TWIST: "Summit Twist",
+  SUMMIT_CARDS: "Summit Cards",
+  SUMMIT_VOTE: "Summit Vote",
+}
+
 export const CONTESTANTS = {
   STUDENT: {
     name: "Student",
     health: 10,
     attribute: {
-      type: "Mind",
+      type: "mind",
 
       body: 18,
       might: 5,
@@ -34,7 +47,7 @@ export const CONTESTANTS = {
     name: "Accountant",
     health: 10,
     attribute: {
-      type: "Mind",
+      type: "mind",
 
       body: 11,
       might: 2,
@@ -65,7 +78,7 @@ export const CONTESTANTS = {
     name: "Architect",
     health: 10,
     attribute: {
-      type: "Mind",
+      type: "mind",
 
       body: 19,
       might: 4,
@@ -96,7 +109,7 @@ export const CONTESTANTS = {
     name: "Scientist",
     health: 10,
     attribute: {
-      type: "Mind",
+      type: "mind",
 
       body: 19,
       might: 4,
@@ -127,7 +140,7 @@ export const CONTESTANTS = {
     name: "Professor",
     health: 10,
     attribute: {
-      type: "Mind",
+      type: "mind",
 
       body: 10,
       might: 2,
@@ -158,7 +171,7 @@ export const CONTESTANTS = {
     name: "Librarian",
     health: 10,
     attribute: {
-      type: "Mind",
+      type: "mind",
 
       body: 8,
       might: 1,
@@ -189,7 +202,7 @@ export const CONTESTANTS = {
     name: "Paramedic",
     health: 10,
     attribute: {
-      type: "Body",
+      type: "body",
 
       body: 20,
       might: 3,
@@ -220,7 +233,7 @@ export const CONTESTANTS = {
     name: "Mechanic",
     health: 10,
     attribute: {
-      type: "Body",
+      type: "body",
 
       body: 20,
       might: 4,
@@ -251,7 +264,7 @@ export const CONTESTANTS = {
     name: "Courier",
     health: 10,
     attribute: {
-      type: "Body",
+      type: "body",
 
       body: 21,
       might: 3,
@@ -282,7 +295,7 @@ export const CONTESTANTS = {
     name: "Soldier",
     health: 10,
     attribute: {
-      type: "Body",
+      type: "body",
 
       body: 23,
       might: 7,
@@ -313,7 +326,7 @@ export const CONTESTANTS = {
     name: "Coach",
     health: 10,
     attribute: {
-      type: "Body",
+      type: "body",
 
       body: 23,
       might: 7,
@@ -344,7 +357,7 @@ export const CONTESTANTS = {
     name: "Builder",
     health: 10,
     attribute: {
-      type: "Body",
+      type: "body",
 
       body: 24,
       might: 8,
@@ -375,7 +388,7 @@ export const CONTESTANTS = {
     name: "Salesperson",
     health: 10,
     attribute: {
-      type: "Persona",
+      type: "persona",
 
       body: 16,
       might: 5,
@@ -406,7 +419,7 @@ export const CONTESTANTS = {
     name: "Broker",
     health: 10,
     attribute: {
-      type: "Persona",
+      type: "persona",
 
       body: 18,
       might: 4,
@@ -437,7 +450,7 @@ export const CONTESTANTS = {
     name: "Housewife",
     health: 10,
     attribute: {
-      type: "Persona",
+      type: "persona",
 
       body: 12,
       might: 2,
@@ -468,7 +481,7 @@ export const CONTESTANTS = {
     name: "Politician",
     health: 10,
     attribute: {
-      type: "Persona",
+      type: "persona",
 
       body: 11,
       might: 3,
@@ -500,11 +513,10 @@ export const CONTESTANTS = {
 export const EVENTCARDS = [
   {
     name: "Faux Safety",
-    description:
-      "This crafty move paid off! You fooled everyone on the crew into believing that it’s the real deal.",
-    usage: "Play at Starstruck Summit.",
-    expiration: "Can be played with 6 or more contestants remaining.",
-    effect: "The contestant(s) with the greatest deception score are immune.",
+    when: "", // Now, when needed, next summit
+    where: "", // event phase, summit phase
+    expiration: "", // none, 5+, 6+, 7+ , 8+
+    effects: [], // Immune, Twist, Solo+1, Solo-1, Crew+1, Crew-1, Pick2+1, Pick2-1, Lazy+1, Lazy-1
   },
 ]
 
@@ -529,5 +541,80 @@ export const SUMMITTWISTCARDS = [
       "The pressure is turning on and the players are starting to play harder than ever. And if that means backstabbing and betrayal - then so be it.",
     effect:
       "All castaways with a troublemaker tag AND all castaways with a deception value of 8 or higher are safe and cannot be voted out.",
+  },
+]
+
+export const MOCK_PLAYERS = [
+  {
+    name: "Player 1",
+    icon: "sun",
+    color: "var(--player-pink)",
+    crew: "purple",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
+  },
+  {
+    name: "Player 2",
+    icon: "rocket",
+    color: "var(--player-green)",
+    crew: "purple",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
+  },
+  {
+    name: "Player 3",
+    icon: "stars",
+    color: "var(--player-yellow)",
+    crew: "purple",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
+  },
+  {
+    name: "Player 4",
+    icon: "moon",
+    color: "var(--player-grey)",
+    crew: "purple",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
+  },
+  {
+    name: "Player 5",
+    icon: "satellite",
+    color: "var(--player-red)",
+    crew: "yellow",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
+  },
+  {
+    name: "Player 6",
+    icon: "microscope",
+    color: "var(--player-blue)",
+    crew: "yellow",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
+  },
+  {
+    name: "Player 7",
+    icon: "alien",
+    color: "var(--player-purple)",
+    crew: "yellow",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
+  },
+  {
+    name: "Player 8",
+    icon: "helmet",
+    color: "var(--player-orange)",
+    crew: "yellow",
+    revealed: false,
+    contestants: [],
+    eventCards: [],
   },
 ]

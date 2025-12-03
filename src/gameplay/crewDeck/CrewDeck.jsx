@@ -1,8 +1,13 @@
+import { useContext } from "react"
 import style from "../crewDeck/crewDeck.module.css"
+import { StateContext } from "../../lib/StateContext"
 import { PlayerNameCard } from "../../global/players/PlayerNameCard"
 import { ContestantCard } from "../../global/contestants/ContestantCard"
+import { PHASES } from "../../gameConsts"
 
-export const CrewDeck = ({ players, color }) => {
+export const CrewDeck = ({ color }) => {
+  const { state } = useContext(StateContext)
+
   return (
     <div className={style.crewDeck}>
       <div className={style.deckHeader}>
@@ -21,7 +26,7 @@ export const CrewDeck = ({ players, color }) => {
           </h2>
         </div>
         <div className={style.playersContainer}>
-          {players
+          {state.players
             .filter((player) => player.crew === color)
             .map((player, index) => (
               <PlayerNameCard key={index} player={player} />
@@ -35,19 +40,32 @@ export const CrewDeck = ({ players, color }) => {
           background: `var(--crew-${color}-fill)`,
         }}
       >
-        {players
-          .filter((player) => player.crew === color)
-          .reduce((acc, player) => {
-            const newAcc = [...acc]
-            player.contestants.forEach((contestant) => {
-              const idx = Math.floor(Math.random() * (newAcc.length + 1))
-              newAcc.splice(idx, 0, contestant)
-            })
-            return newAcc
-          }, [])
-          .map((contestant, index) => (
-            <ContestantCard key={index} contestant={contestant} />
-          ))}
+        {state.phase === PHASES.CONTESTANT_REVEAL
+          ? state.players
+              .filter((player) => player.crew === color)
+              .reduce((acc, player) => {
+                return [...acc, ...player.contestants]
+              }, [])
+              .sort((a, b) => {
+                if (a.attribute.type === "body") return -1
+                if (b.attribute.type === "body") return 1
+                if (a.attribute.type === "persona") return -1
+                if (b.attribute.type === "persona") return 1
+                if (a.attribute.type === "mind") return -1
+                if (b.attribute.type === "mind") return 1
+                return 0
+              })
+              .map((contestant, index) => (
+                <ContestantCard key={index} contestant={contestant} />
+              ))
+          : state.players
+              .filter((player) => player.crew === color)
+              .reduce((acc, player) => {
+                return [...acc, ...player.contestants]
+              }, [])
+              .map((contestant, index) => (
+                <ContestantCard key={index} contestant={contestant} />
+              ))}
       </div>
     </div>
   )

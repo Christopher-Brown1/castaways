@@ -1,37 +1,38 @@
 import { useContext, useEffect } from "react"
 
 import { StateContext } from "./lib/StateContext"
-import { PHASES } from "./lib/consts"
-import "./App.css"
-import { Header } from "../src/header/Header.jsx"
-import { Gameplay } from "./gameplay/Gameplay.jsx"
-import { PhaseInstructions } from "./phaseInstructions/PhaseInstructions.jsx"
-// import { EventCard } from "./gameplay/cards/EventCard.jsx"
-// import { ChallengeCard } from "./gameplay/cards/ChallengeCard.jsx"
+import { PHASES } from "./gameConsts"
 import { createRoom } from "./firebase"
 
+import { MasterView } from "./MasterView"
+import "./App.css"
+
 function App() {
-  const { state, setStartState } = useContext(StateContext)
+  const { state, setStartState, setIsClient, setIsMaster } =
+    useContext(StateContext)
 
   useEffect(() => {
     if (state?.loading && state.phase === PHASES.ENTER_GAME)
       createRoom().then((startState) => setStartState(startState))
   }, [state?.loading, state.phase, setStartState])
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "48px",
-      }}
-    >
-      <Header />
-      {/* <ChallengeCard /> */}
-      <Gameplay />
-      <PhaseInstructions />
-    </div>
-  )
+  if (state.isClient) {
+    return <p>ClientView</p>
+  }
+  if (state.isMaster) {
+    return <MasterView />
+  }
+  if (state.loading) {
+    return (
+      <div>
+        <h1>Welcome to StarStruck</h1>
+        <h3>Start a new game now.</h3>
+        <button onClick={setIsMaster}>Host Game</button>
+        <button onClick={setIsClient}>Join Game</button>
+      </div>
+    )
+  }
+  return <p>Loading...</p>
 }
 
 export default App

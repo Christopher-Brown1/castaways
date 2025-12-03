@@ -1,96 +1,25 @@
-import { CONTESTANTS } from "../gameConsts"
-
-export const MOCK_PLAYERS = [
-  {
-    name: "Player 1",
-    icon: "sun",
-    color: "var(--player-pink)",
-    crew: "purple",
-    revealed: false,
-    contestants: [CONTESTANTS["STUDENT"], CONTESTANTS["ACCOUNTANT"]],
-  },
-  {
-    name: "Player 2",
-    icon: "rocket",
-    color: "var(--player-green)",
-    crew: "purple",
-    revealed: false,
-    contestants: [CONTESTANTS["ARCHITECT"], CONTESTANTS["PARAMEDIC"]],
-  },
-  {
-    name: "Player 3",
-    icon: "stars",
-    color: "var(--player-yellow)",
-    crew: "purple",
-    revealed: false,
-    contestants: [CONTESTANTS["MECHANIC"], CONTESTANTS["COURIER"]],
-  },
-  {
-    name: "Player 4",
-    icon: "moon",
-    color: "var(--player-grey)",
-    crew: "purple",
-    revealed: false,
-    contestants: [CONTESTANTS["SALESPERSON"], CONTESTANTS["BROKER"]],
-  },
-  {
-    name: "Player 5",
-    icon: "satellite",
-    color: "var(--player-red)",
-    crew: "yellow",
-    revealed: false,
-    contestants: [CONTESTANTS["SCIENTIST"], CONTESTANTS["PROFESSOR"]],
-  },
-  {
-    name: "Player 6",
-    icon: "microscope",
-    color: "var(--player-blue)",
-    crew: "yellow",
-    revealed: false,
-    contestants: [CONTESTANTS["LIBRARIAN"], CONTESTANTS["SOLDIER"]],
-  },
-  {
-    name: "Player 7",
-    icon: "alien",
-    color: "var(--player-purple)",
-    crew: "yellow",
-    revealed: false,
-    contestants: [CONTESTANTS["COACH"], CONTESTANTS["BUILDER"]],
-  },
-  {
-    name: "Player 8",
-    icon: "helmet",
-    color: "var(--player-orange)",
-    crew: "yellow",
-    revealed: false,
-    contestants: [CONTESTANTS["HOUSEWIFE"], CONTESTANTS["POLITICIAN"]],
-  },
-]
-
-export const PHASES = {
-  ENTER_GAME: "Enter Game",
-  CREW_DIVISION: "Crew Division",
-  CONTESTANT_REVEAL: "Contestant Reveal",
-  EVENT: "Event",
-  LINEUP: "Lineup",
-  CHALLENGE: "Challenge",
-  STRATEGIZE: "Strategize",
-  SUMMIT_TWIST: "Summit Twist",
-  SUMMIT_CARDS: "Summit Cards",
-  SUMMIT_VOTE: "Summit Vote",
-}
+import { CHALLENGECARDS, EVENTCARDS, MOCK_PLAYERS } from "../gameConsts"
+import { randomiseArray } from "./utils"
 
 export const initialState = {
   loading: true,
+  isClient: false,
+  isMaster: false,
   roomCode: null,
   phase: null,
   players: MOCK_PLAYERS,
   contestants: [],
+  eventCards: randomiseArray([...EVENTCARDS]),
+  challengeCards: randomiseArray([...CHALLENGECARDS]),
+  // twistCards: randomiseArray([...TWISTCARDS]),
 }
 
 export const ACTIONS = {
   APP_LOADED: "APP_LOADED",
   SET_PHASE: "SET_PHASE",
+  SET_PLAYERS: "SET_PLAYERS",
+  SET_IS_CLIENT: "SET_IS_CLIENT",
+  SET_IS_MASTER: "SET_IS_MASTER",
 }
 
 export const reducer = (state, action) => {
@@ -99,6 +28,26 @@ export const reducer = (state, action) => {
       return { ...state, ...action.payload, loading: false }
     case ACTIONS.SET_PHASE:
       return { ...state, phase: action.payload }
+    case ACTIONS.SET_PLAYERS:
+      return {
+        ...state,
+        players: action.payload.players,
+        contestants: action.payload.contestants || state.contestants,
+      }
+    case ACTIONS.SET_IS_CLIENT:
+      return {
+        ...state,
+        isClient: true,
+        isMaster: false,
+        phase: PHASES.ENTER_GAME,
+      }
+    case ACTIONS.SET_IS_MASTER:
+      return {
+        ...state,
+        isMaster: true,
+        isClient: false,
+        phase: PHASES.ENTER_GAME,
+      }
     default:
       return state
   }

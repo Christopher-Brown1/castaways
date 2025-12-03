@@ -1,5 +1,5 @@
 import style from "../players/playerCard.module.css"
-import { PHASES } from "../../lib/consts"
+import { PHASES } from "../../gameConsts"
 import alien from "../assets/alien.svg"
 import helmet from "../assets/helmet.svg"
 import microscope from "../assets/microscope.svg"
